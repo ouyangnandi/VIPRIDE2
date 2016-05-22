@@ -1,0 +1,158 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  height: 850px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.topAbsolute90 {
+  top: 90% !Important;
+}
+
+.margin0{
+    margin:0;
+}
+
+.type {
+
+    border: 1px solid #ebeaea;
+
+    position: relative;
+
+    margin-top: 30px;
+
+    display: block;
+
+    font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+
+
+.type_caption {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    display: block;
+
+    width: 312px;
+
+    -moz-box-sizing: border-box;
+
+    -webkit-box-sizing: border-box;
+
+    -o-box-sizing: border-box;
+
+    box-sizing: border-box;
+
+    background: url(../images/capt_bg.png) 0 0 repeat;
+
+    color: #fff;
+
+    font-size: bold;
+
+    font-size: 30px;
+
+    line-height: 30px;
+
+    padding: 7px 30px 8px;
+
+    transition: 0.5s ease;
+
+    -o-transition: 0.5s ease;
+
+    -webkit-transition: 0.5s ease;
+
+}
+
+
+
+.type:hover .type_caption {
+
+    width: 100%;
+
+}
+
+
+
+.type+.type {
+
+    margin: 11px;
+
+}
+
+
+
+.type+.type+.type {
+
+    margin: 10px;
+
+}
+
+.justifyAlign{
+    text-align:justify;
+}
+
+.Inline{
+    display: inline;
+    
+}
+
+.marginTop5{
+    margin-top: 5px;
+}
