@@ -98,7 +98,8 @@
                         }
                     });
                 } else {
-                    alert("bad");
+                   $('#modalInvalid').openModal();
+                   
                 }
             }
 
@@ -130,7 +131,7 @@
 
                     <ul id="nav-mobile" class="side-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Order</a></li>
+                        <li><a href="index_order.html">Order</a></li>
                         <li><a href="index_service.html">Services</a></li>
                         <li><a href="#">Cars</a></li>
                         <li><a href="index_contact.html">Contacts</a></li>
@@ -154,7 +155,17 @@
         <div id="modalError" class="modal">
             <div class="modal-content">
                 <h4 class="fontText">Error</h4>
-                <p class="fontText">There is an error happend in our system. Please call our free phone number  <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> </p>
+                <p class="fontText">There is an error happend in our system. Please call our free phone number  <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a>. </p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
+            </div>
+        </div>
+        
+          <div id="modalInvalid" class="modal">
+            <div class="modal-content">
+                <h4 class="fontText">Error</h4>
+                <p class="fontText">Invalid data format. Please review your input.</p>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
