@@ -1,9 +1,7 @@
 (function($) {
 
     $.fn.backTop = function(options) {
-        
-        
-        
+
         var backBtn = this;
         
         var settings = $.extend({
@@ -17,16 +15,9 @@
         var position = settings['position'];
         var speed = settings['speed'];
         var color = settings['color'];
+
+        backBtn.addClass(color);
         
-        if(color == 'white'){
-            backBtn.addClass('white');
-        } else if(color == 'red'){
-            backBtn.addClass('red');
-        }else if(color == 'green'){
-            backBtn.addClass('green');
-        }else{
-            backBtn.addClass('black');
-        }
         
         backBtn.css({
             'right' : 40,
@@ -36,8 +27,6 @@
         
         $(document).scroll(function(){
             var pos = $(window).scrollTop();
-            console.log(pos);
-            
             if(pos >= position){
                 backBtn.fadeIn(speed);
             } else{
@@ -50,7 +39,7 @@
                 scrollTop:0 
             }, 
             {
-                duration: 1200
+                duration: 500
             }); 
         });
 

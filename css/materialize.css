@@ -2984,6 +2984,7 @@ footer.page-footer .footer-copyright {
   line-height: 50px;
   color: rgba(255, 255, 255, 0.8);
   background-color: rgba(51, 51, 51, 0.08);
+   font-family: "Roboto", sans-serif;
 }
 
 table, th, td {
@@ -4190,6 +4191,7 @@ nav ul a {
   display: inline-block;
   padding: 0 15px;
   cursor: pointer;
+   font-family: "Roboto", sans-serif;
 }
 
 nav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul a.btn-floating {
@@ -4356,6 +4358,7 @@ h4 {
   font-size: 2.28rem;
   line-height: 110%;
   margin: 1.14rem 0 0.912rem 0;
+  font-weight: 400;
 }
 
 h5 {
