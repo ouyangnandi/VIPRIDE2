@@ -17,20 +17,20 @@ $pickUpTimeRange = explode(";", $range);
 $fromTime = date("d-m-Y H:i:s", $pickUpTimeRange[0]);
 $toTime = date("d-m-Y H:i:s", $pickUpTimeRange[1]);
 
-$mail = new PHPMailer(); //建立邮件发送类
-$mail->IsSMTP(); // 使用SMTP方式发送
-$mail->Host = "mail.vipride.com.au"; // 您的企业邮局域名
-$mail->Port = "25";
-$mail->SMTPAuth = true; // 启用SMTP验证功能
-$mail->Username = "client@vipride.com.au"; // 邮局用户名(请填写完整的email地址)
-$mail->Password = "client@vipride.com.au"; // 邮局密码
+$mail = new PHPMailer();
+$mail->IsSMTP();
+$mail->Host = "smtpout.asia.secureserver.net";
+$mail->SMTPAuth = true;
+$mail->Port = "80";
+$mail->Username = "info@vipride.com.au";
+$mail->Password = "info@vipride.com.au";
 $mail->Charset = 'UTF-8';
-$mail->From = "client@vipride.com.au"; //邮件发送者email地址
+$mail->From = "info@vipride.com.au";
 $mail->FromName = "New Order";
 $mail->AddAddress("QL@VIPRIDE.com.au", "QL");
-$mail->AddAddress("client@vipride.com.au", "client");
-//$mail->AddReplyTo("", "");
-//$mail->IsHTML(true); // set email format to HTML //是否使用HTML格式
+$mail->AddAddress("kevin@vipride.com.au", "kevin");
+$mail->AddAddress("andy@vipride.com.au", "andy");
+$mail->AddAddress("ouyangnandi@hotmail.com", "nandi");
 
 $mail->Subject = 'New Order';
 $mail->Body = 'The new order below is coming. Please contact the clien as soon as possible.' . "\n" .
@@ -40,7 +40,7 @@ $mail->Body = 'The new order below is coming. Please contact the clien as soon a
         "Email: " . $email . "\n" .
         "Car Type: " . $carType . "\n" .
         "Pick Up Date: " . $pickUpDate . "\n" .
-        "Pick Up Time Range: From " . $fromTime . " To ". $toTime."\n" .
+        "Pick Up Time Range: From " . $fromTime . " To " . $toTime . "\n" .
         "Pick Up Location: " . $pickUpLocation . "\n" .
         "Destination: " . $destination . "\n" .
         "Message: " . $message . "\n";
@@ -48,7 +48,6 @@ $mail->Body = 'The new order below is coming. Please contact the clien as soon a
 if ($mail->Send()) {
     echo json_encode(array('status' => '0'));
 } else {
-    echo json_encode(array('status' => '1','error'=>$mail->ErrorInfo));
+    echo json_encode(array('status' => '1', 'error' => $mail->ErrorInfo));
 }
 ?>
-
