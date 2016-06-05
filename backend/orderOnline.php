@@ -8,14 +8,13 @@ $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $carType = isset($_POST['typeGroup']) ? $_POST['typeGroup'] : '';
 $pickUpDate = isset($_POST['pickUpDate']) ? $_POST['pickUpDate'] : '';
-$range = isset($_POST['range']) ? $_POST['range'] : '';
+$pickUpTimeRange= isset($_POST['range']) ? $_POST['range'] : '';
 $pickUpLocation = isset($_POST['pickUpLocation']) ? $_POST['pickUpLocation'] : '';
 $destination = isset($_POST['destination']) ? $_POST['destination'] : '';
 $message = isset($_POST['message']) ? $_POST['message'] : '';
+$timeCost = isset($_POST['timeCost']) ? $_POST['timeCost'] : '1';
 
-$pickUpTimeRange = explode(";", $range);
-$fromTime = date("d-m-Y H:i:s", $pickUpTimeRange[0]);
-$toTime = date("d-m-Y H:i:s", $pickUpTimeRange[1]);
+$fromTime = date("H:i:s", $pickUpTimeRange+8*3600);
 
 $mail = new PHPMailer();
 $mail->IsSMTP();
@@ -40,8 +39,9 @@ $mail->Body = 'The new order below is coming. Please contact the clien as soon a
         "Email: " . $email . "\n" .
         "Car Type: " . $carType . "\n" .
         "Pick Up Date: " . $pickUpDate . "\n" .
-        "Pick Up Time Range: From " . $fromTime . " To " . $toTime . "\n" .
+        "Pick Up Time:". $fromTime. "\n" .
         "Pick Up Location: " . $pickUpLocation . "\n" .
+        "Time cost: " . $timeCost. " Hours \n" .
         "Destination: " . $destination . "\n" .
         "Message: " . $message . "\n";
 

@@ -36,15 +36,22 @@
                     min: new Date()
                 });
                 $("#range").ionRangeSlider({
-                    type: "double",
+                    type: "single",
                     min: +moment().startOf('day').format("X"),
                     max: +moment().endOf('day').format("X"),
                     from: +moment().format("X"),
-                    to: +moment().add(4, 'hour').format("X"),
                     prettify: function(num) {
                         return moment(num, "X").format("hh:mm A");
                     }
                 });
+                
+                $("#timeCost").ionRangeSlider({
+                    type: "single",
+                    min: 1,
+                    max: 168,
+                    postfix:" Hours"
+                });
+                
                 $("#onlineOrder").validate({
                     rules: {
                         firstName: {
@@ -125,7 +132,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index_order.html">Order</a></li>
                         <li><a href="index_service.html">Services</a></li>
-                        <li><a href="#">Cars</a></li>
+                          <li><a href="index_cars.html">Cars</a></li>
                         <li><a href="index_contact.html">Contacts</a></li>
                     </ul>
 
@@ -133,7 +140,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index_order.html">Order</a></li>
                         <li><a href="index_service.html">Services</a></li>
-                        <li><a href="#">Cars</a></li>
+                          <li><a href="index_cars.html">Cars</a></li>
                         <li><a href="index_contact.html">Contacts</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -251,6 +258,13 @@
                                 <label for="pickUpLocation">Pick Up Location *</label>
                             </div>
                         </div>
+                        
+                        <div class="row">
+                            <p class="range-field">
+                                <label for="timeCost">Time Cost *</label>
+                                <input type="text" id="timeCost"  name="timeCost" />
+                            </p> 
+                        </div>
 
                         <div class="row">
                             <div class="input-field col s12">
@@ -283,6 +297,7 @@
             <div class="footer-copyright">
                 <div class="container">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
+                      <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
             </div>
         </footer>
