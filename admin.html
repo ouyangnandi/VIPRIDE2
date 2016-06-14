@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Admin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link rel="stylesheet" href="css/ion.rangeSlider.css" />
+        <link rel="stylesheet" href="css/ion.rangeSlider.skinNice.css" />
+        <link rel="stylesheet" href="css/error.css" />
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="js/ion.rangeSlider.js"></script>
+        <script src="js/init.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#range").ionRangeSlider({
+                    type: "single",
+                    min: 1,
+                    max: 100
+                });
+
+               $('select').material_select();
+            });
+
+        </script>
+
+    </head>
+    <body>
+        <div class="navbar-fixed">
+            <nav class="white" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="#" class="brand-logo">VIP RIDE</a>
+
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Sign Out</a></li>
+                    </ul>
+
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="index.html">Sign Out</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modalAdmin" class="modal">
+            <div class="modal-content">
+                <h4 class="fontText">Admin Details</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input  id="username" name="username" type="text" class="validate" required="" aria-required="true" >
+                        <label for="username"  >Username</label>
+                        <span ></span>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="password" name="password" type="password" >
+                        <label for="password">Password</label>
+                        <span ></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">CANCEL</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
+            </div>
+        </div>
+
+        <div id="modalCoupon" class="modal">
+            <div class="modal-content">
+                <h4 class="fontText">Coupon Details</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="1">Free Hours</option>
+                            <option value="2">% Discount</option>
+                            <option value="3">$ Off</option>
+                        </select>
+                        <label>Coupon Type</label>
+                    </div>
+                    <div class="col s6">
+                        <span ></span>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class=" col s12">
+                        <p class="range-field">
+                            <label for="range">Value</label>
+                            <input type="text" id="range"  name="range" />
+                        </p> 
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">CANCEL</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a href="#test1">Admin User</a></li>
+                            <li class="tab col s3"><a href="#test2">Coupon</a></li>
+                        </ul>
+                    </div>
+                    <div id="test1" class="col s12">
+
+                        <div style="margin-top:10px">
+                            <ul class="pagination" style="float:right">
+                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                <li class="active"><a href="#!">1</a></li>
+                                <li class="waves-effect"><a href="#!">2</a></li>
+                                <li class="waves-effect"><a href="#!">3</a></li>
+                                <li class="waves-effect"><a href="#!">4</a></li>
+                                <li class="waves-effect"><a href="#!">5</a></li>
+                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                            </ul>
+                            <a class="waves-effect waves-light btn" onclick="$('#modalAdmin').openModal();"><i class="material-icons left">add</i>Add</a>
+                            <a class="waves-effect waves-light btn" ><i class="material-icons left">delete</i>Remove</a>
+                        </div>
+                        <table class="responsive-table highlight bordered" >
+                            <thead>
+                                <tr>
+                                    <th data-field="selection"></th>
+                                    <th data-field="username">Username</th>
+                                    <th data-field="password">Password</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>  
+                                        <input type="checkbox" class="filled-in" id="Jonathan1" />
+                                        <label for="Jonathan1"></label>
+                                    </td>
+                                    <td>Jonathan1</td>
+                                    <td><a onclick="" href="#">Change</a></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td> <input type="checkbox" class="filled-in" id="Jonathan2" /> <label for="Jonathan2"></label></td>
+                                    <td>Jonathan2</td>
+                                    <td><a onclick="" href="#">Change</a></td>
+
+
+                                </tr>
+                                <tr>
+                                    <td> <input type="checkbox" class="filled-in" id="Jonathan3" /> <label for="Jonathan3"></label></td>
+
+                                    <td>Jonathan3</td>
+                                    <td><a onclick="" href="#">Change</a></td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div id="test2" class="col s12">
+                        <div style="margin-top:10px">
+                            <ul class="pagination" style="float:right">
+                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                <li class="active"><a href="#!">1</a></li>
+                                <li class="waves-effect"><a href="#!">2</a></li>
+                                <li class="waves-effect"><a href="#!">3</a></li>
+                                <li class="waves-effect"><a href="#!">4</a></li>
+                                <li class="waves-effect"><a href="#!">5</a></li>
+                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                            </ul>
+                            <a class="waves-effect waves-light btn" onclick="$('#modalCoupon').openModal();"><i class="material-icons left" >add</i>Add</a>
+                            <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Remove</a>
+                        </div>
+                        <table class="responsive-table highlight bordered" >
+                            <thead>
+                                <tr>
+                                    <th data-field="selection"></th>
+                                    <th data-field="username">COUPON</th>
+                                    <th data-field="password">Description</th>
+                                    <th data-field="password">Used</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>  
+                                        <input type="checkbox" class="filled-in" id="ABCDE1" />
+                                        <label for="ABCDE1"></label>
+                                    </td>
+                                    <td>ABCDE1</td>
+                                    <td>Free 2 hours</td>
+                                    <td> <input type="checkbox" class="filled-in" id="ABCDE1_STATUS" /> <label for="ABCDE1_STATUS"></label></td>   
+
+
+                                </tr>
+                                <tr>
+                                    <td> <input type="checkbox" class="filled-in" id="ABCDE2" /> <label for="ABCDE2"></label></td>
+                                    <td>ABCDE2</td>
+                                    <td>10% discount</td>
+                                    <td> <input type="checkbox" class="filled-in" id="ABCDE2_STATUS" /> <label for="ABCDE2_STATUS"></label></td>    
+
+                                </tr>
+                                <tr>
+                                    <td> <input type="checkbox" class="filled-in" id="ABCDE3" /> <label for="ABCDE3"></label></td>
+
+                                    <td>ABCDE3</td>
+                                    <td>$5 off</td>
+                                    <td> <input type="checkbox" class="filled-in" id="ABCDE3_STATUS" /> <label for="ABCDE3_STATUS"></label></td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </body>
+</html>
+
