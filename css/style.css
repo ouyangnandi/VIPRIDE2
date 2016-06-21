@@ -164,3 +164,33 @@ footer.page-footer {
     color: rgba(0,0,0,0.87);
 
 }
+
+.btn-large{
+    border-radius: 25px;
+
+}
+
+.cus-light-blue{
+    background-color:#47b8e5
+}
+
+.cus-light-blue:hover{
+    background-color: #1fa5da;
+    border-color: #1fa5da;
+    color: #fff;
+}
+
+.indexBarText{
+
+    background-color:#47b8e5;
+    font-weight: bold;
+    font-size: 20px;
+    color:#fff !important;
+    border-radius: 25px;
+    max-width: 1000px;
+    text-align: center;
+    margin:auto;
+    margin-top: 10px;
+    margin-bottom:10px;
+
+}

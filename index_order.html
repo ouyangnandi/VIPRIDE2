@@ -44,14 +44,14 @@
                         return moment(num, "X").format("hh:mm A");
                     }
                 });
-                
+
                 $("#timeCost").ionRangeSlider({
                     type: "single",
                     min: 1,
                     max: 168,
-                    postfix:" Hours"
+                    postfix: " Hours"
                 });
-                
+
                 $("#onlineOrder").validate({
                     rules: {
                         firstName: {
@@ -90,7 +90,7 @@
                         url: 'backend/orderOnline.php',
                         type: 'post',
                         dataType: 'json',
-                        data:$("#onlineOrder").serialize() ,
+                        data: $("#onlineOrder").serialize(),
                         success: function(request) {
                             if (request.status == "0") {
                                 $('#modalSuccess').openModal();
@@ -105,8 +105,7 @@
                         }
                     });
                 } else {
-                   $('#modalInvalid').openModal();
-                   
+                    $('#modalInvalid').openModal();
                 }
             }
 
@@ -132,7 +131,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index_order.html">Order</a></li>
                         <li><a href="index_service.html">Services</a></li>
-                          <li><a href="index_cars.html">Cars</a></li>
+                        <li><a href="index_cars.html">Cars</a></li>
                         <li><a href="index_contact.html">Contacts</a></li>
                     </ul>
 
@@ -140,7 +139,7 @@
                         <li><a href="index.html">Home</a></li>
                         <li><a href="index_order.html">Order</a></li>
                         <li><a href="index_service.html">Services</a></li>
-                          <li><a href="index_cars.html">Cars</a></li>
+                        <li><a href="index_cars.html">Cars</a></li>
                         <li><a href="index_contact.html">Contacts</a></li>
                     </ul>
                     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -168,8 +167,8 @@
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
             </div>
         </div>
-        
-          <div id="modalInvalid" class="modal">
+
+        <div id="modalInvalid" class="modal">
             <div class="modal-content">
                 <h4 class="fontText">Error</h4>
                 <p class="fontText">Invalid data format. Please review your input.</p>
@@ -193,101 +192,101 @@
             </div>
 
             <div class="section">
-                <div class="row">
-                    <form id="onlineOrder" class="col s12" method="post">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input  id="firstName" name="firstName" type="text" class="validate" required="" aria-required="true" >
-                                <label for="firstName"  >First Name *</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="lastName" name="lastName" type="text" >
-                                <label for="lastName">Last Name </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="phone" type="text"  name="phone" class="validate"  required="" aria-required="true" >
-                                <label for="phone">Phone *</label>
-                            </div>
 
-                            <div class="input-field col s6">
-                                <input id="email" type="email" name="email" class="validate">
-                                <label for="email" data-error="Invalid format" data-success="Valid format">Email</label>
-                            </div>
+                <form id="onlineOrder" class="col s12" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="firstName" name="firstName" type="text" class="validate" required="" aria-required="true" >
+                            <label for="firstName"  >First Name *</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="lastName" name="lastName" type="text" >
+                            <label for="lastName">Last Name </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="phone" type="text"  name="phone" class="validate"  required="" aria-required="true" >
+                            <label for="phone">Phone *</label>
                         </div>
 
-                        <div class="row">
-                            <label for="typeGroup" > Vehicle Type *</label>
-                            <div class="input-field col s12">
-                                <input name="typeGroup" type="radio" class="with-gap" id="lux" value="lux" />
-                                <label for="lux">LUX</label>
-                                &nbsp;
-                                <input name="typeGroup" type="radio" class="with-gap" id="suv" value="suv" />
-                                <label for="suv">SUV</label>
-                                &nbsp;
-                                <input name="typeGroup" type="radio" class="with-gap" id="peopleMover" value="peopleMover"  />
-                                <label for="peopleMover">PEOPLE MOVER</label>
-                                <br/>
-                                <br/>
-                                <br/>
-                                <span ></span>
-                            </div>
-
+                        <div class="input-field col s6">
+                            <input id="email" type="email" name="email" class="validate">
+                            <label for="email" data-error="Invalid format" data-success="Valid format">Email</label>
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <label for="pickUpDate">Pick Up Date *</label>
-                                <input type="date" id="pickUpDate" name="pickUpDate" class="datepicker" required="" aria-required="true" >
-                                <br/>
-                                <span ></span>
-                            </div>
+                    <div class="row">
+                        <label for="typeGroup" > Vehicle Type *</label>
+                        <div class="input-field col s12">
+                            <input name="typeGroup" type="radio" class="with-gap" id="lux" value="lux" />
+                            <label for="lux">LUX</label>
+                            &nbsp;
+                            <input name="typeGroup" type="radio" class="with-gap" id="suv" value="suv" />
+                            <label for="suv">SUV</label>
+                            &nbsp;
+                            <input name="typeGroup" type="radio" class="with-gap" id="peopleMover" value="peopleMover"  />
+                            <label for="peopleMover">PEOPLE MOVER</label>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span ></span>
                         </div>
 
-                        <div class="row">
-                            <p class="range-field">
-                                <label for="range">Pick Up Time *</label>
-                                <input type="text" id="range"  name="range" />
-                            </p> 
-                        </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="pickUpLocation" name="pickUpLocation" class="materialize-textarea validate" required="" aria-required="true" ></textarea>
-                                <label for="pickUpLocation">Pick Up Location *</label>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="pickUpDate">Pick Up Date *</label>
+                            <input type="date" id="pickUpDate" name="pickUpDate" class="datepicker" required="" aria-required="true" >
+                            <br/>
+                            <span ></span>
                         </div>
-                        
-                        <div class="row">
-                            <p class="range-field">
-                                <label for="timeCost">Time Cost *</label>
-                                <input type="text" id="timeCost"  name="timeCost" />
-                            </p> 
-                        </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="destination" name="destination" class="materialize-textarea validate" required="" aria-required="true"></textarea>
-                                <label for="destination">Destination *</label>
-                            </div>
-                        </div>
+                    <div class="row">
+                        <p class="range-field">
+                            <label for="range">Pick Up Time *</label>
+                            <input type="text" id="range"  name="range" />
+                        </p> 
+                    </div>
 
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="message" name="message" class="materialize-textarea" ></textarea>
-                                <label for="message">Message</label>
-                            </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="pickUpLocation" name="pickUpLocation" class="materialize-textarea validate" required="" aria-required="true" ></textarea>
+                            <label for="pickUpLocation">Pick Up Location *</label>
                         </div>
-                        <div class="row" >
-                            <div class="input-field col s12 right-align">
-                                <button class="btn waves-effect waves-light"  onclick="onlineOrder()">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
+                    </div>
+
+                    <div class="row">
+                        <p class="range-field">
+                            <label for="timeCost">Time Cost *</label>
+                            <input type="text" id="timeCost"  name="timeCost" />
+                        </p> 
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="destination" name="destination" class="materialize-textarea validate" required="" aria-required="true"></textarea>
+                            <label for="destination">Destination *</label>
                         </div>
-                    </form>
-                </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="message" name="message" class="materialize-textarea" ></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="input-field col s12 right-align">
+                            <button class="btn waves-effect waves-light"  onclick="onlineOrder()">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
 
             </div>
         </div>
@@ -297,7 +296,7 @@
             <div class="footer-copyright">
                 <div class="container">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
-                      <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
+                    <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
             </div>
         </footer>
