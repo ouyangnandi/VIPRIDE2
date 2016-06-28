@@ -44,14 +44,12 @@
                         return moment(num, "X").format("hh:mm A");
                     }
                 });
-
                 $("#timeCost").ionRangeSlider({
                     type: "single",
                     min: 1,
                     max: 168,
                     postfix: " Hours"
                 });
-
                 $("#onlineOrder").validate({
                     rules: {
                         firstName: {
@@ -77,13 +75,15 @@
                         }
                     }
                 });
-
                 $("#onlineOrder").submit(function(e) {
                     e.preventDefault();
                 });
+
+
             });
             function onlineOrder() {
-
+                $("#customoverlay").show();
+                $("#preloader").show();
                 if ($("#onlineOrder").valid()) {
                     console.log($("#onlineOrder").serialize());
                     $.ajax({
@@ -92,10 +92,16 @@
                         dataType: 'json',
                         data: $("#onlineOrder").serialize(),
                         success: function(request) {
+                            $("#customoverlay").hide();
+                            $("#preloader").hide();
                             if (request.status == "0") {
                                 $('#modalSuccess').openModal();
                                 $("#onlineOrder")[0].reset();
-                            } else {
+                            } else if (request.status == "2") {
+                                console.log(request.error);
+                                $('#modalCouponError').openModal();
+                            }
+                            else {
                                 console.log(request.error);
                                 $('#modalError').openModal();
                             }
@@ -105,6 +111,8 @@
                         }
                     });
                 } else {
+                    $("#customoverlay").hide();
+                    $("#preloader").hide();
                     $('#modalInvalid').openModal();
                 }
             }
@@ -125,7 +133,7 @@
         <div class="navbar-fixed">
             <nav class="white" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#" class="brand-logo">VIP RIDE</a>
+                    <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
 
                     <ul class="right hide-on-med-and-down">
                         <li><a href="index.html">Home</a></li>
@@ -157,6 +165,18 @@
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
             </div>
         </div>
+        <div id="customoverlay"></div>
+        <div class="preloader-wrapper big active" id="preloader" >
+            <div class="spinner-layer spinner-blue-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
 
         <div id="modalError" class="modal">
             <div class="modal-content">
@@ -178,6 +198,15 @@
             </div>
         </div>
 
+        <div id="modalCouponError" class="modal">
+            <div class="modal-content">
+                <h4 class="fontText">Error</h4>
+                <p class="fontText">Invalid Coupon. Please review your input.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
+            </div>
+        </div>
 
         <div class="container">
             <div class="section">
@@ -217,8 +246,9 @@
                     </div>
 
                     <div class="row">
-                        <label for="typeGroup" > Vehicle Type *</label>
-                        <div class="input-field col s12">
+
+                        <div class="input-field col s6">
+                            <label for="typeGroup" > Vehicle Type *</label><br/>
                             <input name="typeGroup" type="radio" class="with-gap" id="lux" value="lux" />
                             <label for="lux">LUX</label>
                             &nbsp;
@@ -231,6 +261,11 @@
                             <br/>
                             <br/>
                             <span ></span>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input id="coupon" name="coupon" type="text" >
+                            <label for="Coupon">Coupon </label>
                         </div>
 
                     </div>

@@ -128,15 +128,11 @@ footer.page-footer {
 
 }
 
-
-
 .type+.type {
 
     margin: 11px;
 
 }
-
-
 
 .type+.type+.type {
 
@@ -192,5 +188,44 @@ footer.page-footer {
     margin:auto;
     margin-top: 10px;
     margin-bottom:10px;
+    min-width: 300px;
 
+}
+
+#preloader { 
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    z-index: 101;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    width: 120px;
+    height: 120px;
+    display:none;
+}
+
+#customoverlay
+{   
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #FFF;
+    opacity: .3;
+    filter: alpha(opacity=30);
+    -moz-opacity: .3;
+    z-index: 100;
+}
+
+.indexTitle{
+    width:300px;
+    margin:auto;
+    border-radius: 25px
 }

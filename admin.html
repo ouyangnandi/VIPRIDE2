@@ -21,20 +21,32 @@
         <script src="js/init.js"></script>
         <script src="js/adminManagement.js"></script>
         <script src="js/couponManagement.js"></script>
+        <script type="text/javascript" src="js/cookie.js"></script>
 
         <script>
+            if (!Cookies.get('username')) {
+                $(location).attr('href', 'adminLogin.html');
+            }
+            $.validator.setDefaults({
+                ignore: []
+            });
             $(document).ready(function() {
                 $("#coupon_value").ionRangeSlider({
                     type: "single",
                     min: 1,
                     max: 100
                 });
-
                 $('select').material_select();
-
                 getAdmins(1);
-                getCoupons(1);
+                initAdminForm();
+                initCouponForm();
+
             });
+
+            function logout() {
+                Cookies.remove('username');
+                $(location).attr('href', 'index.html');
+            }
 
         </script>
 
@@ -43,10 +55,10 @@
         <div class="navbar-fixed">
             <nav class="white" role="navigation">
                 <div class="nav-wrapper container">
-                    <a id="logo-container" href="#" class="brand-logo">VIP RIDE</a>
+                    <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
 
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="index.html">Sign Out</a></li>
+                        <li><a href="#" onclick="logout()">Sign Out</a></li>
                     </ul>
 
                     <ul id="nav-mobile" class="side-nav">
@@ -62,18 +74,20 @@
             <div class="modal-content">
                 <h4 class="fontText">Admin Details</h4>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input  id="admin_username" name="admin_username" type="text" class="validate" required="" aria-required="true" >
-                        <label for="username"  >Username</label>
-                        <span ></span>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="admin_password" name="admin_password" type="password" >
-                        <label for="password">Password</label>
-                        <span ></span>
-                    </div>
+                    <form id="adminForm"  method="post">
+                        <div class="input-field col s6">
+                            <input  id="admin_username" name="admin_username" type="text" class="validate" required="" aria-required="true" minlength="5">
+                            <label for="admin_username"  >Username</label>
+                            <span ></span>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="admin_password" name="admin_password" type="password" class="validate" required="" aria-required="true" minlength="5">
+                            <label for="password">Password</label>
+                            <span ></span>
+                        </div>
 
-                    <input  id="admin_id" name="admin_id" type="text" style="display: none">
+                        <input  id="admin_id" name="admin_id" type="text" style="display: none">
+                    </form>
                 </div>
             </div>
             <div class="modal-footer">
@@ -85,30 +99,45 @@
         <div id="modalCoupon" class="modal">
             <div class="modal-content">
                 <h4 class="fontText">Coupon Details</h4>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <select id="coupon_type">
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="Free Hours">Free Hours</option>
-                            <option value="% Discount">% Discount</option>
-                            <option value="$ Off">$ Off</option>
-                        </select>
-                        <label>Coupon Type</label>
-                    </div>
-                    <div class="col s6">
-                        <span ></span>
-                    </div>
+                <form id="couponForm"  method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select id="coupon_type" name="coupon_type"   required="" aria-required="true">
+                                <option value="" disabled selected >Please select a type</option>
+                                <option value="Free Hours">Free Hours</option>
+                                <option value="% Discount">% Discount</option>
+                                <option value="$ Off">$ Off</option>
+                            </select>
+                            <label for="coupon_type">Coupon Type</label>
+                            <span ></span>
+                        </div>
+                        <div class="col s6">
+                            <span ></span>
+                        </div>
 
-                </div>
-
-                <div class="row">
-                    <div class=" col s12">
-                        <p class="range-field">
-                            <label for="range">Value</label>
-                            <input type="text" id="coupon_value"  name="coupon_value" />
-                        </p> 
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="coupon_num" > Coupon Times</label><br/>
+                            <input name="coupon_num" type="radio" class="with-gap" id="oneOff" onclick="setCouponNum(0)" checked  />
+                            <label for="oneOff">One Off</label>
+                            &nbsp;
+                            <input name="coupon_num" type="radio" class="with-gap" id="Infinity" onclick="setCouponNum(1)" />
+                            <label for="Infinity">Infinity</label>
+                            <span ></span>
+                            <input type="hidden" id="couponNum" value="0" />;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col s12">
+                            <p class="range-field">
+                                <label for="range">Value</label>
+                                <input type="text" id="coupon_value"  name="coupon_value" />
+                                <span ></span>
+                            </p> 
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">CANCEL</a>
@@ -116,13 +145,27 @@
             </div>
         </div>
 
+
         <div class="container">
+
+            <div class="preloader-wrapper big active" id="preloader">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="section">
                 <div class="row">
                     <div class="col s12">
                         <ul class="tabs">
-                            <li class="tab col s3"><a href="#test1">Admin User</a></li>
-                            <li class="tab col s3"><a href="#test2">Coupon</a></li>
+                            <li class="tab col s3"><a href="#test1" onclick="getAdmins(1)">Admin User</a></li>
+                            <li class="tab col s3"><a href="#test2" onclick="getCoupons(1)">Coupon</a></li>
                         </ul>
                     </div>
                     <div id="test1" class="col s12">
@@ -130,8 +173,9 @@
                         <div style="margin-top:10px">
                             <ul class="pagination" style="float:right" id="adminPager">
                             </ul>
-                            <a class="waves-effect waves-light btn" onclick="openModal('modalAdmin')"><i class="material-icons left">add</i>Add</a>
+                            <a class="waves-effect waves-light btn" onclick="openUpdateAdmin(null, null);"><i class="material-icons left">add</i>Add</a>
                         </div>
+
                         <table class="responsive-table highlight bordered" id="adminTable" >
                             <thead>
                                 <tr>
@@ -151,14 +195,16 @@
                         <div style="margin-top:10px">
                             <ul class="pagination" style="float:right" id="couponPager">
                             </ul>
-                            <a class="waves-effect waves-light btn" onclick="$('#modalCoupon').openModal();"><i class="material-icons left" >add</i>Add</a>
+                            <a class="waves-effect waves-light btn" onclick="openCouponDialog('modalCoupon')"><i class="material-icons left" >add</i>Add</a>
                         </div>
                         <table class="responsive-table highlight bordered" id="couponTable" >
                             <thead>
                                 <tr>
-                                    <th data-field="username">COUPON</th>
-                                    <th data-field="password">Description</th>
-                                    <th data-field="password">Used</th>
+                                    <th data-field="Coupon">COUPON</th>
+                                    <th data-field="Description">Description</th>
+                                    <th data-field="Type">Type</th>
+                                    <th data-field="Inactive">Inactive</th>
+                                    <th data-field="Count">Count</th>
                                     <th></th>
                                 </tr>
                             </thead>

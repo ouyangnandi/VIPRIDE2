@@ -38,11 +38,12 @@ function getCoupons() {
 function createCoupon() {
 
     $option = $_REQUEST['type'];
-    $value = $_REQUEST['value'];
+    $value = isset($_REQUEST['value']) ? intval($_REQUEST['value']):1;
+    $status_type = isset($_REQUEST['coupon_num']) ? intval($_REQUEST['coupon_num']):0;
 
     $con = DatabaseConn::getConn();
 
-    $sql = "insert into coupon (coupon_type,coupon_value,status,code) values('" . $option . "'," . $value . ",0,'')";
+    $sql = "insert into coupon (coupon_type,coupon_value,status,code,count,status_type) values('" . $option . "'," . $value . ",0,'',0,$status_type)";
     $result = mysqli_query($con, $sql);
 
     if (!$result) {
@@ -58,7 +59,7 @@ function createCoupon() {
         $code .= dechex(rand(0, 15));
     }
 
-    $result = mysqli_query($con, "UPDATE coupon SET code = '" . $code . "' WHERE id = " . $id);
+    $result = mysqli_query($con, "UPDATE coupon SET code = '" . strtoupper($code) . "' WHERE id = " . $id);
 
     if ($result) {
         echo json_encode(array('success' => true, 'msg' => "Create coupon successfully"));
