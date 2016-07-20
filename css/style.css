@@ -266,6 +266,14 @@ footer.page-footer {
     color:#FFFFFF;
 }
 
+.goldLink{
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+    color:#feed80;
+}
+.goldLink a:hover{
+    color:#FFFFFF;
+}
+
 .geryTextLink{}
 
 .greyTextLink div a{
@@ -329,11 +337,21 @@ footer.page-footer {
     color: white;
     font-size: 16px;
     text-decoration: none;
-    margin: 0 auto;
+    margin: 2px auto;
     height:50px;
     text-align: center;
 }
 
 .buttonGold:hover{
     color:#816620;
+}
+
+input {
+    color:#D7C2B0;
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+}
+
+textarea{
+    color:#D7C2B0;
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
 }

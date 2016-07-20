@@ -14,13 +14,11 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/jquery.backTop.js"></script>
         <script type="text/javascript" src="js/cookie.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
         <script>
 
-            $(function() {
-                $("#menu").load("menu.html");
-            });
-
             $(document).ready(function() {
+                loadMenu();
                 $('.slider').slider({full_width: true, height: 400, indicators: false});
                 $('#backTop').backTop({
                     // the scroll position in px from the top
@@ -50,47 +48,83 @@
 
         <div class="navbar-fixed" id="menu">
 
+            <nav class="menuStyle" role="navigation">
+                <div class="nav-wrapper container ">
+                    <a id="logo-container" href="index.html" class="brand-logo" style="color:#feed80">VIP RIDE</a>
+
+                    <ul class="right hide-on-med-and-down menuText">
+                        <li>|<a href="index.html">HOME </a> </li>
+                        <li>|<a href="index_order.html">ORDER</a></li>
+                        <li>|<a href="index_service.html">SERVICES</a></li>
+                        <li>|<a href="index_cars.html">CARS</a></li>
+                        <li>|<a href="index_contact.html">CONTACTS</a></li>
+                        <li id="registerLink">|<a href="index_user.html">REGISTER</a></li>
+                        <li id="userinfoLink">|<a href="index_userinfo.html">USER INFO</a></li>
+                        <li id="loginLink">|<a href="index_login.html">LOG IN</a>|</li>
+                        <li id="logoutLink">|<a href="#" onclick="logout()">LOG OUT</a>|</li>
+                    </ul>
+
+                    <ul id="nav-mobile" class="side-nav menuText black">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index_order.html">Order</a></li>
+                        <li><a href="index_service.html">Services</a></li>
+                        <li><a href="index_cars.html">Cars</a></li>
+                        <li><a href="index_contact.html">Contacts</a></li>
+                        <li id="registermLink"><a href="index_user.html">Register</a></li>
+                        <li id="userinfomLink"><a href="index_userinfo.html">USER INFO</a></li>
+                        <li id="loginmLink"><a href="index_login.html">Log in</a></li>
+                        <li id="logoutmLink"><a href="#" onclick="logout()">Log out</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
         </div>
 
-
-        <div id="index-banner" class="parallax-container" style="width:1300px;margin:10px auto;border: #feed80 1px solid;">
-            <div class="slider">
-                <ul class="slides">
-                    <li>
-                        <img src="images/index/b1.jpg"> <!-- random image -->
-                    </li>
-                    <li>
-                        <img src="images/index/b2.jpg"> <!-- random image -->
-                    </li>
-                    <li>
-                        <img  src="images/index/b3.jpg"> <!-- random image -->
-                    </li>
-                </ul>
+        <div class="container ">
+            <div class="row">
+                <div id="index-banner" class="parallax-container" style="width:100%;margin:10px auto;border: #feed80 1px solid;">
+                    <div class="slider">
+                        <ul class="slides">
+                            <li>
+                                <img src="images/index/b1.jpg"> <!-- random image -->
+                            </li>
+                            <li>
+                                <img src="images/index/b2.jpg"> <!-- random image -->
+                            </li>
+                            <li>
+                                <img  src="images/index/b3.jpg"> <!-- random image -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        
-            
-            <div class="container boxBorderThick">
-                <div class="section">
 
-                    <div class="row">
+
+        <div class="container boxBorderThick">
+            <div class="section">
+
+                <div class="row">
+                    <div class="col s12 m12">
                         <div class="center-align white-text"> <h5 class="sectionTitle">Welcome to VIP RIDE</h5></div>
                         <div style=" color:#A8A8B0;text-align: center">
                             Charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable.
                         </div>
                     </div>
+                </div>
 
-                    <div class="row center">
+                <div class="row center">
+                    <div class="col s12 m12">
                         <a href="index_order.html" id="download-button"  class=" waves-effect waves-light  marginTop5 buttonGold" >ORDER ONLINE</a>
 
                         <a class=" waves-effect waves-light  marginTop5 buttonGold" href="tel:+6141050051"><i class=" material-icons">call</i>
                             <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
-
                     </div>
-
                 </div>
+
             </div>
-      
+        </div>
+
 
         <div class="container">
             <div class="section">
@@ -136,14 +170,14 @@
                         <!--   Icon Section   -->
 
 
-                        <div class="col  s12 m6 boxBorder">
+                        <div class="col  s12 m5 boxBorder">
                             <h5 class="goldFont">VIP RIDE</h5>
-                            <p class="whiteFont text-lighten-4">We specialise in offering charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable. We have a fleet of luxury sedans, SUVs and people movers ready to cater your transportation needs.</p>
+                            <p class="whiteFont text-lighten-4">We specialise in offering charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable. A fleet of luxury sedans, SUVs and people movers r to cater your transportation needs.</p>
                         </div>
-                        <div class="col m1" style="width:3.5%" >
+                        <div class="col m1"  >
                             <h5 class="goldFont"></h5>
                         </div>
-                        <div class="boxBorder col m5 "  style="width:46%">
+                        <div class="boxBorder col m6 " >
                             <div class="col l6  ">
                                 <h5 class="goldFont ">Why Choose Us</h5>
                                 <ul class="ulliMargin">
@@ -189,7 +223,7 @@
                                 <i class="smallToM material-icons white-text">perm_identity</i></span><br/>
                             <span title="two luggages"> <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i> </span>
 
-                            <p class="light whiteFont" style="margin-top:0px"> Audi A6  Audi A8 Mercedes E350</p>
+                            <p class="light whiteFont" style="margin-top:0px"> Audi A6  | Audi A8 | Mercedes E350</p>
 
                         </div>
                     </div>
@@ -201,7 +235,7 @@
                             <span title="four passengers">    <i class="smallToM material-icons white-text">perm_identity</i> <i class="smallToM material-icons white-text">perm_identity</i><i class="smallToM material-icons white-text">perm_identity</i>
                                 <i class="smallToM material-icons white-text">perm_identity</i></span><br><span title="two luggages">
                                 <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i> </span>
-                            <p class="light whiteFont" style="margin-top:0px"> Audi Q7  BMW X5</p>
+                            <p class="light whiteFont" style="margin-top:0px"> Audi Q7 | BMW X5</p>
                         </div>
                     </div>
 
@@ -226,15 +260,18 @@
                 <div class="section">
 
                     <div class="row">
-                        <div class="center-align white-text"> <h5 class="sectionTitle">Request a quote? <b>Request it in two way</b></h5></div>
+                        <div class="col s12 m12">
+                            <div class="center-align white-text"> <h5 class="sectionTitle">Request a quote? <b>Request it in two way</b></h5></div>
+                        </div>
                     </div>
 
                     <div class="row center">
-                        <a href="index_order.html" id="download-button"  class=" waves-effect waves-light  marginTop5 buttonGold" >ORDER ONLINE</a>
+                        <div class="col s12 m12">
+                            <a href="index_order.html" id="download-button"  class=" waves-effect waves-light  marginTop5 buttonGold" >ORDER ONLINE</a>
 
-                        <a class=" waves-effect waves-light  marginTop5 buttonGold" href="tel:+6141050051"><i class=" material-icons">call</i>
-                            <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
-
+                            <a class=" waves-effect waves-light  marginTop5 buttonGold" href="tel:+6141050051"><i class=" material-icons">call</i>
+                                <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
+                        </div>
                     </div>
 
                 </div>
