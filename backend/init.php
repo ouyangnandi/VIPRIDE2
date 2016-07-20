@@ -31,4 +31,6 @@ function inject_check($sql_str) {
     return preg_match('/^(\s)select\s|(\s)insert\s|(\s)and(\s)|(\s)or(\s)|(\s)update(\s)|(\s)delete(\s)|\'|\/\*|\*|(\s)union(\s)|(\s)into(\s)|(\s)load_file(\s)|(\s)outfile(\s)/i', $sql_str);
 } 
 
+
+
 ?>

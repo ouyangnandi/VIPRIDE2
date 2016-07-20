@@ -13,18 +13,22 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/jquery.backTop.js"></script>
-
+        <script type="text/javascript" src="js/cookie.js"></script>
         <script>
 
+            $(function() {
+                $("#menu").load("menu.html");
+            });
+
             $(document).ready(function() {
-                $('.slider').slider({full_width: true, height: 850, indicators: false});
+                $('.slider').slider({full_width: true, height: 400, indicators: false});
                 $('#backTop').backTop({
                     // the scroll position in px from the top
                     'position': 400,
                     // scroll animation speed
                     'speed': 3000,
                     // red, white, black or green
-                    'color': 'cusGreen',
+                    'color': 'black',
                 });
                 $('.materialboxed').materialbox();
             });
@@ -33,89 +37,60 @@
 
         </script>  
     </head>
-    <body>
+    <body class="backgroundSet">
 
-        <div class="navbar-fixed " style="height:30px">
-            <nav class="teal" role="navigation" style="line-height: 30px">
+        <div class="navbar-fixed " style="height:30.5px">
+            <nav class="black goldTextLink" role="navigation" style="line-height: 15px;height:31px">
                 <div class="nav-wrapper container">
-                    <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> |
-                    <a class="grey-text text-lighten-4" href="mailto:QL@VIPRIDE.com.au"><i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">email</i> QL@VIPRIDE.com.au</a>
+                    <a href="tel:+61410500513" class="goldFont text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> |
+                    <a class="goldFont text-lighten-4" href="mailto:QL@VIPRIDE.com.au"><i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">email</i> QL@VIPRIDE.com.au</a>
                 </div>
             </nav>
         </div>
 
-        <div class="navbar-fixed">
-            <nav class="white" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
+        <div class="navbar-fixed" id="menu">
 
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index_order.html">Order</a></li>
-                        <li><a href="index_service.html">Services</a></li>
-                        <li><a href="index_cars.html">Cars</a></li>
-                        <li><a href="index_contact.html">Contacts</a></li>
-                    </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index_order.html">Order</a></li>
-                        <li><a href="index_service.html">Services</a></li>
-                        <li><a href="index_cars.html">Cars</a></li>
-                        <li><a href="index_contact.html">Contacts</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                </div>
-            </nav>
         </div>
 
-        <div id="index-banner" class="parallax-container">
+
+        <div id="index-banner" class="parallax-container" style="width:1300px;margin:10px auto;border: #feed80 1px solid;">
             <div class="slider">
                 <ul class="slides">
                     <li>
-                        <img src="images/index/background1.jpg"> <!-- random image -->
-                        <div class="caption  center-align header center  text-lighten-2" >
-
-                            <h1 class="cus-light-blue indexTitle" >VIP RIDE</h1>
-                            <p class="indexBarText">Charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable.</p>
-                            <a href="index_order.html" id="download-button" class="btn-large waves-effect waves-light cus-light-blue marginTop5">ORDER ONLINE</a>
-
-                            <a class="btn-large waves-effect waves-light cus-light-blue marginTop5" href="tel:+6141050051"><i class=" material-icons">call</i>
-                                <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
-
-                        </div>
+                        <img src="images/index/b1.jpg"> <!-- random image -->
                     </li>
                     <li>
-                        <img src="images/index/background2.jpg"> <!-- random image -->
-                        <div class="caption  center-align header center  text-lighten-2">
-
-                            <h1 class="cus-light-blue indexTitle" >VIP RIDE</h1>
-                            <p class="indexBarText">Charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable.</p>
-                            <a href="index_order.html" id="download-button" class="btn-large waves-effect waves-light cus-light-blue marginTop5">ORDER ONLINE</a>
-
-                            <a class="btn-large waves-effect waves-light cus-light-blue marginTop5" href="tel:+6141050051"><i class=" material-icons">call</i>
-                                <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
-
-
-                        </div>
+                        <img src="images/index/b2.jpg"> <!-- random image -->
                     </li>
                     <li>
-                        <img  src="images/index/background3.jpg"> <!-- random image -->
-                        <div class="caption  center-align header center  text-lighten-2">
-
-                            <h1  class="cus-light-blue indexTitle" >VIP RIDE</h1>
-                            <p class="indexBarText">Charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable.</p>
-
-                            <a href="index_order.html" id="download-button" class="btn-large waves-effect waves-light cus-light-blue marginTop5">ORDER ONLINE</a>
-
-                            <a class="btn-large waves-effect waves-light cus-light-blue marginTop5" href="tel:+6141050051"><i class=" material-icons">call</i>
-                                <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
-
-                        </div>
+                        <img  src="images/index/b3.jpg"> <!-- random image -->
                     </li>
                 </ul>
             </div>
         </div>
+        
+            
+            <div class="container boxBorderThick">
+                <div class="section">
+
+                    <div class="row">
+                        <div class="center-align white-text"> <h5 class="sectionTitle">Welcome to VIP RIDE</h5></div>
+                        <div style=" color:#A8A8B0;text-align: center">
+                            Charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable.
+                        </div>
+                    </div>
+
+                    <div class="row center">
+                        <a href="index_order.html" id="download-button"  class=" waves-effect waves-light  marginTop5 buttonGold" >ORDER ONLINE</a>
+
+                        <a class=" waves-effect waves-light  marginTop5 buttonGold" href="tel:+6141050051"><i class=" material-icons">call</i>
+                            <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
+
+                    </div>
+
+                </div>
+            </div>
+      
 
         <div class="container">
             <div class="section">
@@ -123,29 +98,29 @@
                 <!--   Icon Section   -->
                 <div class="row">
                     <div class="col s12 m4">
-                        <div class="icon-block">
+                        <div class="icon-block boxBorder">
                             <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-                            <h5 class="center">Fast & Safe</h5>
+                            <h5 class="center goldFont">FAST & SAFE</h5>
 
-                            <p class="light">VIP RIDE offers an efficient, safe and comfortable service with professional friendly drivers to cater your land transportation needs for trips, tours, special occasions and other private charters in our fleet of luxury cars.</p>
+                            <p class="light whiteFont">VIP RIDE offers an efficient, safe and comfortable service with professional friendly drivers to cater your land transportation needs for trips, tours, special occasions and other private charters in our fleet of luxury cars.</p>
                         </div>
                     </div>
 
                     <div class="col s12 m4">
-                        <div class="icon-block">
+                        <div class="icon-block boxBorder">
                             <h2 class="center brown-text"><i class="material-icons">thumb_up</i></h2>
-                            <h5 class="center">Best Prices</h5>
+                            <h5 class="center goldFont">BEST PRICE</h5>
 
-                            <p class="light">VIP RIDE offers amazing and professional charter services for trips at affordable prices, if you ever need to get to your destination in style, VIP RIDE is a perfect fit to satisfy your needs, desires or sudden craving for a taste of fanciness</p>
+                            <p class="light whiteFont">VIP RIDE offers amazing and professional charter services for trips at affordable prices, if you ever need to get to your destination in style, VIP RIDE is a perfect fit to satisfy your needs, desires or sudden craving for a taste of fanciness</p>
                         </div>
                     </div>
 
                     <div class="col s12 m4">
-                        <div class="icon-block">
+                        <div class="icon-block boxBorder">
                             <h2 class="center brown-text"><i class="material-icons">work</i></h2>
-                            <h5 class="center">Package Delivery</h5>
+                            <h5 class="center goldFont">PACKAGE DELIVERY</h5>
 
-                            <p class="light">VIP RIDE offers a wide variety of service options and shipping tools to meet all your needs. Wherever you are , you can count on VIP RIDE to deliver the service excellence you expect for all your package and envelope shipments..</p>
+                            <p class="light whiteFont">VIP RIDE offers a wide variety of service options and shipping tools to meet all your needs. Wherever you are, you can count on VIP RIDE to deliver the service excellence you expect for all your package and envelope shipments.</p>
                         </div>
                     </div>
                 </div>
@@ -153,35 +128,43 @@
             </div>
         </div>
 
-        <div class="teal margin0">
+        <div class="margin0">
             <div class="container ">
                 <div class="section">
 
-                    <div class="row">
+                    <div class="row" >
                         <!--   Icon Section   -->
 
 
-                        <div class="col l6 s12">
-                            <h5 class="white-text">VIP RIDE</h5>
-                            <p class="grey-text text-lighten-4">We specialise in offering charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable. We have a fleet of luxury sedans, SUVs and people movers ready to cater your transportation needs.</p>
+                        <div class="col  s12 m6 boxBorder">
+                            <h5 class="goldFont">VIP RIDE</h5>
+                            <p class="whiteFont text-lighten-4">We specialise in offering charter services for trips in prestige, fancy and luxury style yet comfortable, professional and affordable. We have a fleet of luxury sedans, SUVs and people movers ready to cater your transportation needs.</p>
                         </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text">Why Choose Us</h5>
-                            <ul>
-                                <li><a class="white-text" href="#">Fast & Safe</a></li>
-                                <li><a class="white-text" href="#">24/7 On time every time</a></li>
-                                <li><a class="white-text" href="#">Professional and affordable</a></li>
+                        <div class="col m1" style="width:3.5%" >
+                            <h5 class="goldFont"></h5>
+                        </div>
+                        <div class="boxBorder col m5 "  style="width:46%">
+                            <div class="col l6  ">
+                                <h5 class="goldFont ">Why Choose Us</h5>
+                                <ul class="ulliMargin">
+                                    <li><a class="yellowFont" href="#">Fast & Safe</a></li>
+                                    <li><a class="yellowFont" href="#">24/7 On time every time</a></li>
+                                    <li><a class="yellowFont" href="#">Professional and affordable</a></li>
 
-                            </ul>
+                                </ul>
+                            </div>
+                            <div class="col l6 ">
+                                <h5 class="white-text"> 	&nbsp;</h5>
+                                <ul class="ulliMargin">
+                                    <li><a class="yellowFont" href="#!">Substantial fleet of luxury cars</a></li>
+                                    <li><a class="yellowFont" href="#!">Various styles for different occasions</a></li>
+                                    <li><a class="yellowFont" href="#!">Book in advance and stress free</a></li>
+                                </ul>
+
+                            </div>
+
                         </div>
-                        <div class="col l3 s12">
-                            <h5 class="white-text"> 	&nbsp;</h5>
-                            <ul>
-                                <li><a class="white-text" href="#!">Substantial fleet of luxury cars</a></li>
-                                <li><a class="white-text" href="#!">Various styles for different occasions</a></li>
-                                <li><a class="white-text" href="#!">Book in advance and stress free</a></li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -191,60 +174,65 @@
             <div class="section">
 
                 <div class="row">
-                    <div class="col s12 center">
+                    <div class="col s12 center goldFont">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h4>Luxury Vehicles</h4>
+                        <h4 class="sectionTitle">Luxury Vehicles</h4>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col s12 m4">
-                        <a href="index_cars.html" class="type"><img src="images/page1_img1.jpg" width="100%" class="materialboxed" ><span class="type_caption">LUX</span></a>
-                        <h5 >Luxury Class</h5>
-                        <span title="four passengers">   <i class="smallToM material-icons">perm_identity</i> <i class="smallToM material-icons">perm_identity</i><i class="smallToM material-icons">perm_identity</i>
-                            <i class="smallToM material-icons">perm_identity</i></span><br>
-                        <span title="two luggages"> <i class="smallToM material-icons">work</i>  <i class="smallToM material-icons">work</i> </span>
+                    <div class="col s12 m4 ">
+                        <div class="icon-block boxBorder">
+                            <a href="index_cars.html" class="type"><img src="images/page1_img1.jpg" width="100%" class="materialboxed" ><span class="type_caption">LUX</span></a>
+                            <h5 class="goldFont">Luxury Class</h5>
+                            <span title="four passengers">   <i class="smallToM material-icons white-text">perm_identity</i> <i class="smallToM material-icons white-text">perm_identity</i><i class="smallToM material-icons white-text">perm_identity</i>
+                                <i class="smallToM material-icons white-text">perm_identity</i></span><br/>
+                            <span title="two luggages"> <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i> </span>
 
-                        <p class="light" style="margin-top:0px"> Audi A6 <br/> Audi A8<br/>Mercedes E350</p>
+                            <p class="light whiteFont" style="margin-top:0px"> Audi A6  Audi A8 Mercedes E350</p>
 
-
+                        </div>
                     </div>
 
-                    <div class="col s12 m4">
-                        <a href="index_cars.html" class="type"><img src="images/page1_img2.jpg" width="100%" class="materialboxed" ><span class="type_caption">SUV</span></a>
-                        <h5 >SUV Class</h5>
-                        <span title="four passengers">    <i class="smallToM material-icons">perm_identity</i> <i class="smallToM material-icons">perm_identity</i><i class="smallToM material-icons">perm_identity</i>
-                            <i class="smallToM material-icons">perm_identity</i></span><br><span title="two luggages">
-                            <i class="smallToM material-icons">work</i>  <i class="smallToM material-icons">work</i> </span>
-                        <p class="light" style="margin-top:0px"> Audi Q7 <br/> BMW X5</p>
+                    <div class="col s12 m4 ">
+                        <div class="icon-block boxBorder">
+                            <a href="index_cars.html" class="type"><img src="images/page1_img2.jpg" width="100%" class="materialboxed" ><span class="type_caption">SUV</span></a>
+                            <h5 class="goldFont">SUV Class</h5>
+                            <span title="four passengers">    <i class="smallToM material-icons white-text">perm_identity</i> <i class="smallToM material-icons white-text">perm_identity</i><i class="smallToM material-icons white-text">perm_identity</i>
+                                <i class="smallToM material-icons white-text">perm_identity</i></span><br><span title="two luggages">
+                                <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i> </span>
+                            <p class="light whiteFont" style="margin-top:0px"> Audi Q7  BMW X5</p>
+                        </div>
                     </div>
 
-                    <div class="col s12 m4">
-                        <a href="index_cars.html" class="type"><img src="images/page1_img3.jpg" width="100%" class="materialboxed" ><span class="type_caption">People Mover</span></a>
-                        <h5 >People Mover</h5>
-                        <span title="seven passengers"> 
-                            <i class="smallToM material-icons">perm_identity</i> <i class="smallToM material-icons">perm_identity</i><i class="smallToM material-icons">perm_identity</i>
-                            <i class="smallToM material-icons">perm_identity</i>  <i class="smallToM material-icons">perm_identity</i>  <i class="smallToM material-icons">perm_identity</i>
-                            <i class="smallToM material-icons">perm_identity</i> </span><br/><span title="four luggages">
-                            <i class="smallToM material-icons">work</i>  <i class="smallToM material-icons">work</i>  <i class="smallToM material-icons">work</i>  <i class="smallToM material-icons">work</i> </span>
-                        <p class="light" style="margin-top:0px"> Mercedes Viano</p>
+                    <div class="col s12 m4 ">
+                        <div class="icon-block boxBorder">
+                            <a href="index_cars.html" class="type"><img src="images/page1_img3.jpg" width="100%" class="materialboxed" ><span class="type_caption">People Mover</span></a>
+                            <h5 class="goldFont">People Mover</h5>
+                            <span title="seven passengers"> 
+                                <i class="smallToM material-icons white-text">perm_identity</i> <i class="smallToM material-icons white-text">perm_identity</i><i class="smallToM material-icons white-text">perm_identity</i>
+                                <i class="smallToM material-icons white-text">perm_identity</i>  <i class="smallToM material-icons white-text">perm_identity</i>  <i class="smallToM material-icons white-text">perm_identity</i>
+                                <i class="smallToM material-icons white-text">perm_identity</i> </span><br/><span title="four luggages">
+                                <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i>  <i class="smallToM material-icons white-text">work</i> </span>
+                            <p class="light whiteFont" style="margin-top:0px"> Mercedes Viano</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
         </div>
-        <div class="teal margin0">
-            <div class="container ">
+        <div class="margin0">
+            <div class="container boxBorderThick">
                 <div class="section">
 
                     <div class="row">
-                        <div class="center-align white-text"> <h5>Request a quote? <b>Request it in two way</b></h5></div>
+                        <div class="center-align white-text"> <h5 class="sectionTitle">Request a quote? <b>Request it in two way</b></h5></div>
                     </div>
 
                     <div class="row center">
-                        <a href="index_order.html" id="download-button" style="background-color: #47b8e5" class="btn-large waves-effect waves-light  marginTop5">ORDER ONLINE</a>
+                        <a href="index_order.html" id="download-button"  class=" waves-effect waves-light  marginTop5 buttonGold" >ORDER ONLINE</a>
 
-                        <a class="btn-large waves-effect waves-light cus-light-blue marginTop5" href="tel:+6141050051"><i class=" material-icons">call</i>
+                        <a class=" waves-effect waves-light  marginTop5 buttonGold" href="tel:+6141050051"><i class=" material-icons">call</i>
                             <div style="float: right;display:inline">  +61 (0) 410 500 513</div></a>
 
                     </div>
@@ -256,48 +244,46 @@
             <div class="section">
 
                 <div class="row">
-                    <div class="col s12 center">
+                    <div class="col s12 center goldFont">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h4>Reviews</h4>
+                        <h4 class="sectionTitle">Reviews</h4>
                     </div>
                 </div>
 
                 <div class="row">
+                    <div class="col s12 m4 ">
+                        <div class="icon-block boxBorder height190">
+                            <h5 class="center whiteFont ">Tim Barkley</h5>
+                            <p class="light justifyAlign whiteFont"> Great service! Driver was ready and waiting for us at the appointed time, the car was great and the driver was very professional. Would definitely recommend this service.
+                        </div></div>
+
+                    <div class="col s12 m4 ">
+                        <div class="icon-block boxBorder height190">
+                            <h5 class="center whiteFont">Linda Grey</h5>
+                            <p class="light justifyAlign whiteFont" > 
+                                I had booked a round trip between airport to hotel . This service was perfect ! I am really satisfied , and strongly recommended.
+
+                        </div></div>
+
                     <div class="col s12 m4">
-
-                        <h5 class="center">Tim Barkley</h5>
-                        <p class="light justifyAlign"> <img src="images/quote_left.png" class="Inline">Great service! Driver was ready and waiting for us at the appointed time, the car was great and the driver was very professional. Would definitely recommend this service.
-                    </div>
-
-                    <div class="col s12 m4">
-
-
-                        <h5 class="center">Linda Grey</h5>
-                        <p class="light justifyAlign" > <img src="images/quote_left.png" class="Inline">
-                            I had booked a round trip between airport to hotel . This service was perfect ! I am really satisfied , and strongly recommended.
-
-                    </div>
-
-                    <div class="col s12 m4">
-
-
-                        <h5 class="center">Ann Pool</h5>
-                        <p class="light justifyAlign">   <img src="images/quote_left.png" class="Inline">
-
-                            First-class service. The website is easy to use , online staff was very helpful and responsed quickly and the driver was very helpful.
+                        <div class="icon-block boxBorder height190">
+                            <h5 class="center whiteFont">Ann Pool</h5>
+                            <p class="light justifyAlign whiteFont"> 
+                                First-class service. The website is easy to use , online staff was very helpful and responsed quickly and the driver was very helpful.
+                        </div>  
                     </div>
                 </div>
 
             </div>
         </div>
 
-        <footer class="page-footer teal" style="padding: 0">
+        <footer class="page-footer black" style="padding: 0">
             <a id="backTop" href="#">Back To Top</a>
-            <div class="footer-copyright">
-                <div class="container">
+            <div class="footer-copyright greyTextLink">
+                <div class="container ">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
 
-                    <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
+                    <a href="#" style="float:right; "> TERMS & CONDITIONS </a><a href="#" style="float:right;"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
 
             </div>

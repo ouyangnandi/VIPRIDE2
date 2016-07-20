@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>User Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/cookie.js"></script>
+
+        <script>
+
+            $(function() {
+                $("#menu").load("menu.html");
+            });
+
+            $(document).ready(function() {
+                $("#userLogin").validate({
+                    rules: {
+                        email: {
+                            required: true,
+                        },
+                        password: {
+                            required: true,
+                        }
+                    },
+                    errorElement: 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).siblings("span");
+                        error.addClass("invalid");
+                        if (placement.length > 0) {
+                            element.addClass("invalid");
+                            error.insertAfter(placement);
+                        } else {
+                            element.addClass("invalid");
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                $("#userLogin").submit(function(e) {
+                    e.preventDefault();
+                });
+
+                $("#forgetPassword").validate({
+                    rules: {
+                        email: {
+                            required: true,
+                        }
+                    },
+                    errorElement: 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).siblings("span");
+                        error.addClass("invalid");
+                        if (placement.length > 0) {
+                            element.addClass("invalid");
+                            error.insertAfter(placement);
+                        } else {
+                            element.addClass("invalid");
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                $("#forgetPassword").submit(function(e) {
+                    e.preventDefault();
+                });
+
+
+                if (Cookies.get('email')) {
+                    $(location).attr('href', 'index_userinfo.html');
+                }
+
+            });
+
+            function login() {
+
+                if ($("#userLogin").valid()) {
+                    $.ajax({
+                        url: 'backend/userLogin.php?action=1',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $("#userLogin").serialize(),
+                        success: function(request) {
+                            if (request.status == "1") {
+                                Cookies.set('email', $("#email").val(), {expires: 1});
+                                $(location).attr('href', 'index_userinfo.html');
+                            } else {
+                                $("#errorInfo").html("Email or passowrd is invalid");
+                            }
+                        },
+                        error: function(request) {
+                            $("#errorInfo").html("Error happened");
+                        }
+                    });
+                }
+
+            }
+
+            function openForgetPassword() {
+                $("#forgetPassword")[0].reset();
+                $('#modalPassword').openModal();
+
+            }
+
+            function forgetPassword() {
+                $("#errorPassInfo").html("");
+                if ($("#forgetPassword").valid()) {
+                    $.ajax({
+                        url: 'backend/userLogin.php?action=2',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $("#forgetPassword").serialize(),
+                        success: function(request) {
+                            if (request.status == "1") {
+                                alert("Password reset successfully.Please login using your new password");
+                                $('#modalPassword').closeModal();
+                            } else {
+                                console.log(request.responseText);
+                                $("#errorPassInfo").html("Password reset failed.Please contact us by email");
+                            }
+                        },
+                        error: function(request) {
+                            console.log(request.responseText);
+                            $("#errorPassInfo").html("Password reset failed.Please contact us by email");
+                        }
+                    });
+                }
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <div class="navbar-fixed" id="menu"></div>
+
+        <div id="modalPassword" class="modal" >
+            <div class="modal-content">
+                <h4 class="fontText">Forget Password</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div id="errorPassInfo" style="color:red"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form id="forgetPassword" class="col s12" method="post">
+                        <div class="input-field col s12">
+                            <input  id="emailAddress" name="emailAddress" type="email" class="validate" required="" aria-required="true" >
+                            <label for="emailAddress"  data-error="Invalid format" data-success="Valid format">Email </label>
+                            <span ></span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">CANCEL</a>
+                <a href="#!" class=" modal-action  waves-effect waves-green btn-flat fontText" onclick="forgetPassword()">OK</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section">
+
+                <div class="row">
+                    <div class="col s12 center">
+                        <h3><i class="mdi-content-send brown-text"></i></h3>
+                        <h4>User Login</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div id="errorInfo" style="color:red"></div>
+                    </div>
+                </div>
+
+                <form id="userLogin" class="col s12" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="email" name="email" type="email" class="validate" required="" aria-required="true" >
+                            <label for="email"  data-error="Invalid format" data-success="Valid format">Email </label>
+                            <span ></span>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="password" name="password" type="password" >
+                            <label for="password">Password</label>
+                            <span ></span>
+                            <div><a href="#" onclick="openForgetPassword();">Forget Password ?</a></div>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="input-field col s12 right-align">
+                            <button class="btn waves-effect waves-light"  onclick="login()">Login
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+          
+
+    </body>
+</html>

@@ -12,7 +12,12 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/jquery.backTop.js"></script>
+        <script type="text/javascript" src="js/cookie.js"></script>
         <script>
+            $(function() {
+                $("#menu").load("menu.html");
+            });
+
             $(document).ready(function() {
                 $('#backTop').backTop({
                     // the scroll position in px from the top
@@ -20,7 +25,7 @@
                     // scroll animation speed
                     'speed': 3000,
                     // red, white, black or green
-                    'color': 'cusGreen',
+                    'color': 'black',
                 });
             });
         </script>
@@ -34,29 +39,7 @@
                 </div>
             </nav>
         </div>
-        <div class="navbar-fixed">
-            <nav class="white" role="navigation">
-                <div class="nav-wrapper container">
-                    <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
-                    <ul class="right hide-on-med-and-down">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index_order.html">Order</a></li>
-                        <li><a href="index_service.html">Services</a></li>
-                        <li><a href="index_cars.html">Cars</a></li>
-                        <li><a href="index_contact.html">Contacts</a></li>
-                    </ul>
-
-                    <ul id="nav-mobile" class="side-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index_order.html">Order</a></li>
-                        <li><a href="index_service.html">Services</a></li>
-                        <li><a href="index_cars.html">Cars</a></li>
-                        <li><a href="index_contact.html">Contacts</a></li>
-                    </ul>
-                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-                </div>
-            </nav>
-        </div>
+        <div class="navbar-fixed" id="menu"></div>
         <div class="container">
             <div class="row">
                 <div class="center-align"> <h3>FIND US</h3></div>
@@ -99,13 +82,15 @@
             </div>
         </div>
 
-        <footer class="page-footer teal" style="padding: 0">
+        <footer class="page-footer black" style="padding: 0">
             <a id="backTop" href="#">Back To Top</a>
-            <div class="footer-copyright">
-                <div class="container">
+            <div class="footer-copyright greyTextLink">
+                <div class="container ">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
-                      <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
+
+                    <a href="#" style="float:right; "> TERMS & CONDITIONS </a><a href="#" style="float:right;"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
+
             </div>
         </footer>
 

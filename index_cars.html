@@ -12,8 +12,14 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/jquery.backTop.js"></script>
-        
-           <script>
+        <script type="text/javascript" src="js/cookie.js"></script>
+
+        <script>
+
+            $(function() {
+                $("#menu").load("menu.html");
+            });
+            
             $(document).ready(function() {
                 $('#backTop').backTop({
                     // the scroll position in px from the top
@@ -21,15 +27,15 @@
                     // scroll animation speed
                     'speed': 3000,
                     // red, white, black or green
-                    'color': 'cusGreen',
+                    'color': 'black',
                 });
             });
-   
+
         </script> 
 
     </head>
     <body>
-         <div class="navbar-fixed " style="height:30px">
+        <div class="navbar-fixed " style="height:30px">
             <nav class="teal" role="navigation" style="line-height: 30px">
                 <div class="nav-wrapper container">
                     <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> |
@@ -37,33 +43,10 @@
                 </div>
             </nav>
         </div>
-        
-         <div class="navbar-fixed">
-        <nav class="white" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
-             
-                <ul class="right hide-on-med-and-down">
-                  <li><a href="index.html">Home</a></li>
-                    <li><a href="index_order.html">Order</a></li>
-                    <li><a href="index_service.html">Services</a></li>
-                     <li><a href="index_cars.html">Cars</a></li>
-                    <li><a href="index_contact.html">Contacts</a></li>
-                </ul>
 
-                <ul id="nav-mobile" class="side-nav">
-                  <li><a href="index.html">Home</a></li>
-                    <li><a href="index_order.html">Order</a></li>
-                     <li><a href="index_service.html">Services</a></li>
-                  <li><a href="index_cars.html">Cars</a></li>
-                   <li><a href="index_contact.html">Contacts</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-         </div>
+        <div class="navbar-fixed" id="menu"></div>
 
- 
+
         <div class="container">
             <div class="section">
 
@@ -78,58 +61,60 @@
                     <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Audi A6</h5>
-                        <img class="materialboxed" width="100%" src="images/cars/A6.jpg">
+                            <img class="materialboxed" width="100%" src="images/cars/A6.jpg">
                         </div>
                     </div>
 
-                      <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
-                             <h5 class="center">Audi A8</h5>
-                        <img class="materialboxed" width="100%" src="images/cars/A8.jpg">
+                            <h5 class="center">Audi A8</h5>
+                            <img class="materialboxed" width="100%" src="images/cars/A8.jpg">
 
                         </div>
                     </div>
 
-                        <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
-                             <h5 class="center">Audi Q7</h5>
-                        <img class="materialboxed" width="100%" src="images/cars/Q7.jpg">
-                          
+                            <h5 class="center">Audi Q7</h5>
+                            <img class="materialboxed" width="100%" src="images/cars/Q7.jpg">
+
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 <div class="row">
                     <div class="col s12 m4">
                         <div class="icon-block">
-                               <h5 class="center">BMW X5</h5>
-                        <img class="materialboxed" width="100%" src="images/cars/X5.jpg">
+                            <h5 class="center">BMW X5</h5>
+                            <img class="materialboxed" width="100%" src="images/cars/X5.jpg">
                         </div>
                     </div>
 
-                      <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
-                             <h5 class="center">Mercedes E350</h5>
-                        <img class="materialboxed" width="100%" src="images/cars/E350.jpg">
-                         
+                            <h5 class="center">Mercedes E350</h5>
+                            <img class="materialboxed" width="100%" src="images/cars/E350.jpg">
+
                         </div>
                     </div>
 
-                 
+
                 </div>
 
             </div>
         </div>
 
-        <footer class="page-footer teal" style="padding: 0">
-              <a id="backTop" href="#">Back To Top</a>
-            <div class="footer-copyright">
-                <div class="container">
+        <footer class="page-footer black" style="padding: 0">
+            <a id="backTop" href="#">Back To Top</a>
+            <div class="footer-copyright greyTextLink">
+                <div class="container ">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
-                      <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff"> PRIVACY &nbsp;|  &nbsp;</a>
+
+                    <a href="#" style="float:right; "> TERMS & CONDITIONS </a><a href="#" style="float:right;"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
+
             </div>
         </footer>
 

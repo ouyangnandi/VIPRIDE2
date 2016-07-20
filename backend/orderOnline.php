@@ -34,20 +34,9 @@ if ($coupon != '') {
     }
 }
 
-
-
 $fromTime = date("H:i:s", $pickUpTimeRange + 8 * 3600);
 
-$mail = new PHPMailer();
-$mail->IsSMTP();
-$mail->Host = "smtpout.asia.secureserver.net";
-$mail->SMTPAuth = true;
-$mail->Port = "80";
-$mail->Username = "info@vipride.com.au";
-$mail->Password = "info@vipride.com.au";
-$mail->Charset = 'UTF-8';
-$mail->From = "info@vipride.com.au";
-$mail->FromName = "New Order";
+$mail = getEmailDefaultSettings();
 $mail->AddAddress("QL@VIPRIDE.com.au", "QL");
 $mail->AddAddress("kevin@vipride.com.au", "kevin");
 $mail->AddAddress("andy@vipride.com.au", "andy");

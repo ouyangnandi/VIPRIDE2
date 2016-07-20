@@ -12,8 +12,13 @@
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/jquery.backTop.js"></script>
-        
-           <script>
+        <script type="text/javascript" src="js/cookie.js"></script>
+
+        <script>
+            $(function() {
+                $("#menu").load("menu.html");
+            });
+
             $(document).ready(function() {
                 $('#backTop').backTop({
                     // the scroll position in px from the top
@@ -21,15 +26,15 @@
                     // scroll animation speed
                     'speed': 3000,
                     // red, white, black or green
-                    'color': 'cusGreen',
+                    'color': 'black',
                 });
             });
-   
+
         </script> 
 
     </head>
     <body>
-         <div class="navbar-fixed " style="height:30px">
+        <div class="navbar-fixed " style="height:30px">
             <nav class="teal" role="navigation" style="line-height: 30px">
                 <div class="nav-wrapper container">
                     <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> |
@@ -37,33 +42,10 @@
                 </div>
             </nav>
         </div>
-        
-         <div class="navbar-fixed">
-        <nav class="white" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
-             
-                <ul class="right hide-on-med-and-down">
-                  <li><a href="index.html">Home</a></li>
-                    <li><a href="index_order.html">Order</a></li>
-                    <li><a href="index_service.html">Services</a></li>
-                    <li><a href="index_cars.html">Cars</a></li>
-                    <li><a href="index_contact.html">Contacts</a></li>
-                </ul>
 
-                <ul id="nav-mobile" class="side-nav">
-                  <li><a href="index.html">Home</a></li>
-                    <li><a href="index_order.html">Order</a></li>
-                     <li><a href="index_service.html">Services</a></li>
-                    <li><a href="index_cars.html">Cars</a></li>
-                   <li><a href="index_contact.html">Contacts</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-         </div>
+        <div class="navbar-fixed" id="menu"></div>
 
- 
+
         <div class="container">
             <div class="section">
 
@@ -78,58 +60,58 @@
                     <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Private charters</h5>
-                             <img src="images/page4_img9.jpg" width="100%" alt=""/>
+                            <img src="images/page4_img9.jpg" width="100%" alt=""/>
                             <p class="light justifyAlign"> Need a fancy ride at a specific time? With our fleet of luxury cars VIP RIDE is always ready, we can tailor make a package just to suit your needs and facilitate whatever you need a ride for.	</p>
-                           
+
                         </div>
                     </div>
 
-                      <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Special occasion</h5>
-                             <img src="images/page4_img2.jpg" width="100%"  alt=""/>
+                            <img src="images/page4_img2.jpg" width="100%"  alt=""/>
                             <p class="light justifyAlign"> Going to an event and want to be WOWed by your friends, VIP RIDE can totally help in different occasions such as Party, wedding and function event.	</p>
-                           
+
                         </div>
                     </div>
 
-                        <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Business needs</h5>
-                             <img src="images/page4_img8.jpg" width="100%" alt=""/>
+                            <img src="images/page4_img8.jpg" width="100%" alt=""/>
                             <p class="light justifyAlign"> Need a decent ride to go see a client or simply a need for your business? VIP RIDE’s fleet of luxury cars not only can protect your business image, we understand it is difficult to avoid drinking in most business occasions, our services and professional drivers would drive for you to keep you away from the stress of drink driving and save you from the consequences to your business.	</p>
-                           
+
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 <div class="row">
                     <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Shopping Excursions</h5>
-                             <img src="images/page4_img5.jpg" width="100%" alt=""/>
+                            <img src="images/page4_img5.jpg" width="100%" alt=""/>
                             <p class="light justifyAlign"> At VIP RIDE, our driver will wait for you outside all your shopping, lunch/dinner. Should you have excess files, shopping or items you do not wish to carry around constantly, you may leave items safely in the car as our driver will not leave the vehicle.	</p>
-                           
+
                         </div>
                     </div>
 
-                      <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Day Tours</h5>
-                             <img src="images/page4_img7.jpg" width="100%" alt=""/>
+                            <img src="images/page4_img7.jpg" width="100%" alt=""/>
                             <p class="light justifyAlign">Ever want to do road tripping in style? VIP RIDE can tailor make a package to suit your needs of visiting popular tourist spots of Western Australia at a affordable price.	</p>
-                           
+
                         </div>
                     </div>
 
-                        <div class="col s12 m4">
+                    <div class="col s12 m4">
                         <div class="icon-block">
                             <h5 class="center">Airport Transfers</h5>
-                             <img src="images/page4_img3.jpg" width="100%" alt=""/>
+                            <img src="images/page4_img3.jpg" width="100%" alt=""/>
                             <p class="light justifyAlign"> Hiring airport transportation services in advance is very important. At VIP RIDE, we can help and save you from run into the risk and consequences of missing your important flight. </p>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -137,13 +119,15 @@
             </div>
         </div>
 
-        <footer class="page-footer teal" style="padding: 0">
-              <a id="backTop" href="#">Back To Top</a>
-            <div class="footer-copyright">
-                <div class="container">
+        <footer class="page-footer black" style="padding: 0">
+            <a id="backTop" href="#">Back To Top</a>
+            <div class="footer-copyright greyTextLink">
+                <div class="container ">
                     &nbsp;©2016 VIP RIDE. All rights reserved.
-                      <a href="asdas" style="float:right;color:#ffffff "> TERMS & CONDITIONS </a><a href="asdas" style="float:right;color:#ffffff;"> PRIVACY &nbsp;|  &nbsp;</a>
+
+                    <a href="#" style="float:right; "> TERMS & CONDITIONS </a><a href="#" style="float:right;"> PRIVACY &nbsp;|  &nbsp;</a>
                 </div>
+
             </div>
         </footer>
 

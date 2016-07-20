@@ -229,3 +229,111 @@ footer.page-footer {
     margin:auto;
     border-radius: 25px
 }
+
+.goldFont{
+    color:#feed80;
+    font-family: "Aldus LT W01 Roman","Times New Roman",serif;
+    text-transform: uppercase;
+}
+
+.whiteFont{
+    color:#FFFFFF;
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+}
+
+.yellowFont{
+    color:#877e48;
+    font-family:  Arial, Verdana, Helvetica, sans-serif;
+    font-size: 12pt;
+
+}
+
+.backgroundSet{
+    background: url("../images/bg.png")  repeat;
+}
+
+.menuStyle {
+    background: #000000;
+    border-bottom: #837A43 solid 1px;
+    border-up: #837A43 solid 1px;
+}
+.goldTextLink{
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+    color:#feed80;
+    border-bottom: #837A43 solid 1px;
+}
+.goldTextLink div a:hover{
+    color:#FFFFFF;
+}
+
+.geryTextLink{}
+
+.greyTextLink div a{
+    color:#A8A8B0
+}
+
+.greyTextLink div a:hover{
+    color:#FFFFFF;
+}
+
+.menuText li{
+    color:#feed80;
+}
+
+.menuText li a{
+    font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+    color:#feed80;
+
+}
+
+.menuText li a:hover{
+    color:#FFFFFF;
+}
+
+.boxBorder{
+    border:#feed80 1px solid;
+    margin-top: 8px;
+}
+
+.boxBorderThick{
+    border:#feed80 3px solid;
+}
+
+.ulliMargin{
+
+}
+.ulliMargin li{
+    margin-top: 9px;
+}
+
+.height190{
+    height:190px;
+}
+
+.sectionTitle{
+    background: url('../images/smallLines.png') no-repeat scroll center bottom transparent;
+    padding: 7px 5px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    font-family: "Aldus LT W01 Roman","Times New Roman",serif;
+    font-weight: 200;
+
+}
+
+.buttonGold{
+    text-transform: uppercase;
+    border: 2px solid #eec551;
+    padding: 13px 15px 5px 15px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 0 auto;
+    height:50px;
+    text-align: center;
+}
+
+.buttonGold:hover{
+    color:#816620;
+}

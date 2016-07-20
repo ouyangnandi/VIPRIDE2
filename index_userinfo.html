@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
     <head>
+        <title>User Information</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-        <title>VIP RIDE</title>
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link rel="stylesheet" href="css/ion.rangeSlider.css" />
-        <link rel="stylesheet" href="css/ion.rangeSlider.skinNice.css" />
-        <link rel="stylesheet" href="css/error.css" />
-        <link href="css/backTop.css" rel="stylesheet">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script type="text/javascript" src="js/jquery.backTop.js"></script>
-        <script src="js/ion.rangeSlider.js"></script>
-        <script src="js/init.js"></script>
-        <script src="js/moment.min.js"></script>
         <script type="text/javascript" src="js/cookie.js"></script>
+
         <script>
 
             $(function() {
@@ -27,31 +23,13 @@
             });
 
             $(document).ready(function() {
-                $('#backTop').backTop({
-                    // the scroll position in px from the top
-                    'position': 400,
-                    // scroll animation speed
-                    'speed': 3000,
-                    // red, white, black or green
-                    'color': 'black',
-                });
-                $('.datepicker').pickadate({
-                    selectMonths: true, // Creates a dropdown to control month
-                    min: new Date()
-                });
 
-                $("#onlineRegister").validate({
+                $("#updateDetails").validate({
                     rules: {
                         firstName: {
                             required: true,
                         },
-                        password: {
-                            required: true,
-                        },
                         phone: {
-                            required: true,
-                        },
-                        email: {
                             required: true,
                         }
                     },
@@ -68,31 +46,69 @@
                         }
                     }
                 });
-                $("#onlineRegister").submit(function(e) {
+                $("#updateDetails").submit(function(e) {
                     e.preventDefault();
                 });
 
+                $("#changePassword").validate({
+                    rules: {
+                        password: {
+                            required: true,
+                        }
+                    },
+                    errorElement: 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).siblings("span");
+                        error.addClass("invalid");
+                        if (placement.length > 0) {
+                            element.addClass("invalid");
+                            error.insertAfter(placement);
+                        } else {
+                            element.addClass("invalid");
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                $("#changePassword").submit(function(e) {
+                    e.preventDefault();
+                });
+
+                if (!Cookies.get('email')) {
+                    $(location).attr('href', 'index_login.html');
+                } else {
+                    $("#emailAddress").val(Cookies.get('email'));
+                    $("#userEmail").html(Cookies.get('email'));
+                    $("#email").val(Cookies.get('email'));
+                    getDetails();
+                }
 
             });
-            function onlineRegister() {
+
+            function openUpdatePassword() {
+                $("#password").val("");
+                $('#modalPassword').openModal();
+
+            }
+            function updateDetails() {
                 $("#customoverlay").show();
                 $("#preloader").show();
-                if ($("#onlineRegister").valid()) {
-                    console.log($("#onlineRegister").serialize());
+                if ($("#updateDetails").valid()) {
+                    console.log($("#updateDetails").serialize());
                     $.ajax({
-                        url: 'backend/registerOnline.php?action=1',
+                        url: 'backend/registerOnline.php?action=2',
                         type: 'post',
                         dataType: 'json',
-                        data: $("#onlineRegister").serialize(),
+                        data: $("#updateDetails").serialize(),
                         success: function(request) {
                             $("#customoverlay").hide();
                             $("#preloader").hide();
                             if (request.success == "true") {
                                 $('#modalSuccess').openModal();
-                                $("#onlineRegister")[0].reset();
+                                getDetails();
                             } else if (request.success == "false") {
                                 console.log(request.msg);
-                                $('#modalEmailError').openModal();
+                                $('#modalError').openModal();
                             }
                             else {
                                 console.log(request.msg);
@@ -114,21 +130,68 @@
                 }
             }
 
-        </script> 
+            function updatePassword() {
+                $("#errorPassInfo").html("");
+                if ($("#changePassword").valid()) {
+                    $.ajax({
+                        url: 'backend/userLogin.php?action=3',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {emailAddress: Cookies.get('email'), password: $("#password").val()},
+                        success: function(request) {
+                            if (request.status == "1") {
+                                alert("Password reset successfully.");
+                                $('#modalPassword').closeModal();
+                            } else {
+                                console.log(request.responseText);
+                                $("#errorPassInfo").html("Password reset failed.Please contact us by email");
+                            }
+                        },
+                        error: function(request) {
+                            console.log(request.responseText);
+                            $("#errorPassInfo").html("Password reset failed.Please contact us by email");
+                        }
+                    });
+                }
+            }
+
+            function getDetails() {
+                $("#customoverlay").show();
+                $("#preloader").show();
+                $.ajax({
+                    url: 'backend/registerOnline.php?action=3',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {email: Cookies.get('email')},
+                    success: function(request) {
+                        $("#userEmail").html(request.email);
+                        $("#points").html(request.point);
+                        $("#code").html(request.invitationCode);
+
+                        $("#firstName").val(request.firstName);
+                        $("#lastName").val(request.lastName);
+                        $("#phone").val(request.phone);
+                        $("#homeAddress").val(request.homeAddress);
+                        $("#companyAddress").val(request.companyAddress);
+                        Materialize.updateTextFields();
+                        $("#customoverlay").hide();
+                        $("#preloader").hide();
+                    },
+                    error: function(request) {
+                        console.log(request.responseText);
+
+                    }
+                });
+
+
+            }
+        </script>
 
     </head>
     <body>
-        <div class="navbar-fixed " style="height:30px">
-            <nav class="teal" role="navigation" style="line-height: 30px">
-                <div class="nav-wrapper container">
-                    <a href="tel:+61410500513" class="grey-text text-lighten-4"> <i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">call</i> +61 (0) 410 500 513</a> |
-                    <a class="grey-text text-lighten-4" href="mailto:QL@VIPRIDE.com.au"><i class="material-icons" style="display:inline;font-size: 1rem;line-height: 30px;">email</i> QL@VIPRIDE.com.au</a>
-                </div>
-            </nav>
-        </div>
+
         <div class="navbar-fixed" id="menu"></div>
 
-        <!-- Modal Structure -->
         <div id="modalSuccess" class="modal">
             <div class="modal-content">
                 <h4 class="fontText">Success</h4>
@@ -171,13 +234,33 @@
             </div>
         </div>
 
-        <div id="modalEmailError" class="modal">
+        <div id="modalPassword" class="modal" >
             <div class="modal-content">
-                <h4 class="fontText">Error</h4>
-                <p class="fontText">Email has been already existed</p>
+                <h4 class="fontText">Update Password</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div id="errorPassInfo" style="color:red"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <form id="changePassword" class="col s12" method="post">
+                        <div class="input-field col s6">
+                            <input  id="emailAddress" name="emailAddress" type="email"  disabled class="validate" required="" aria-required="true" >
+                            <label for="emailAddress"  data-error="Invalid format" data-success="Valid format">Email </label>
+                            <span ></span>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="password" name="password" type="password" >
+                            <label for="password">Password</label>
+                            <span ></span>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">OK</a>
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat fontText">CANCEL</a>
+                <a href="#!" class=" modal-action  waves-effect waves-green btn-flat fontText" onclick="updatePassword()">OK</a>
             </div>
         </div>
 
@@ -187,50 +270,49 @@
                 <div class="row">
                     <div class="col s12 center">
                         <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h4>Register Online</h4>
+                        <h4>User Information</h4>
                     </div>
                 </div>
-
             </div>
 
             <div class="section">
 
-                <form id="onlineRegister" class="col s12" method="post">
-
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="email" type="email" name="email" class="validate">
-                            <label for="email" data-error="Invalid format" data-success="Valid format" required="">Email *</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="password" name="password" type="password" >
-                            <label for="password">Password *</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s3">
+                        Email: <span id="userEmail"> </span>
                     </div>
+                    <div class="input-field col s3">
+                        Points: <span id="points"></span>
+                    </div>
+                    <div class="input-field col s3">
+                        Invitation Code: <span id="code"></span>
+                    </div>
+                    <div class="input-field col s3">
+                        <a href="#" onclick="openUpdatePassword();">Change Password</a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="section">
+
+                <form id="updateDetails" class="col s12" method="post">
+                    <input  id="email" name="email" type="hidden" >
                     <div class="row">
 
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input  id="firstName" name="firstName" type="text" class="validate" required="" aria-required="true" >
                             <label for="firstName"  >First Name *</label>
                         </div>
 
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input  id="lastName" name="lastName" type="text" class="validate" >
                             <label for="lastName">Last Name</label>
                         </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s4">
                             <input id="phone" type="text"  name="phone" class="validate"  required="" aria-required="true" >
                             <label for="phone">Phone *</label>
                         </div>
-                        <div class="input-field col s6">
-                            <input id="invitationCode" name="invitationCode" type="text" >
-                            <label for="invitationCode">Invitation Code </label>
-                        </div>
-
 
                     </div>
 
@@ -250,8 +332,8 @@
 
                     <div class="row" >
                         <div class="input-field col s12 right-align">
-                            <button class="btn waves-effect waves-light"  onclick="onlineRegister()">Submit
-                                <i class="material-icons right">send</i>
+                            <button class="btn waves-effect waves-light"  onclick="updateDetails()">Update Details
+                                <i class="material-icons right">edit</i>
                             </button>
                         </div>
                     </div>
@@ -260,18 +342,6 @@
 
             </div>
         </div>
-
-        <footer class="page-footer black" style="padding: 0">
-            <a id="backTop" href="#">Back To Top</a>
-            <div class="footer-copyright greyTextLink">
-                <div class="container ">
-                    &nbsp;©2016 VIP RIDE. All rights reserved.
-
-                    <a href="#" style="float:right; "> TERMS & CONDITIONS </a><a href="#" style="float:right;"> PRIVACY &nbsp;|  &nbsp;</a>
-                </div>
-
-            </div>
-        </footer>
 
     </body>
 </html>

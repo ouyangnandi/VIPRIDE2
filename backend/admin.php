@@ -47,7 +47,7 @@ function createAdmin() {
     $sql = "select * from admin where username = '$username'";
     $rs = mysqli_query($con, $sql);
     if ($row = mysqli_fetch_object($rs)) {
-        echo json_encode(array('success' => false, 'msg' => '用户名已经存在'));
+        echo json_encode(array('success' => false, 'msg' => 'Username has already been existed'));
         return;
     }
 

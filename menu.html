@@ -1,24 +1,54 @@
-     
-<nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
+<script>
 
-        <ul class="right hide-on-med-and-down">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index_order.html">Order</a></li>
-            <li><a href="index_service.html">Services</a></li>
-            <li><a href="index_cars.html">Cars</a></li>
-            <li><a href="index_contact.html">Contacts</a></li>
-            <li><a href="index_user.html">User</a></li>
+    function logout() {
+        Cookies.remove('email');
+        Cookies.remove('points');
+        $(location).attr('href', 'index.html');
+    }
+
+    if (!Cookies.get("email")) {
+        $("#registerLink").show();
+        $("#loginLink").show();
+        $("#logoutLink").hide();
+
+        $("#registermLink").show();
+        $("#loginmLink").show();
+        $("#logoutmLink").hide();
+    } else {
+        $("#registerLink").hide();
+        $("#loginLink").hide();
+        $("#logoutLink").show();
+
+        $("#registermLink").show();
+        $("#loginmLink").show();
+        $("#logoutmLink").hide();
+    }
+</script>
+
+<nav class="menuStyle" role="navigation">
+    <div class="nav-wrapper container ">
+        <a id="logo-container" href="index.html" class="brand-logo" style="color:white">VIP RIDE</a>
+
+        <ul class="right hide-on-med-and-down menuText">
+            <li>|<a href="index.html">HOME </a> </li>
+            <li>|<a href="index_order.html">ORDER</a></li>
+            <li>|<a href="index_service.html">SERVICES</a></li>
+            <li>|<a href="index_cars.html">CARS</a></li>
+            <li>|<a href="index_contact.html">CONTACTS</a></li>
+            <li id="registerLink">|<a href="index_user.html">REGISTER</a></li>
+            <li id="loginLink">|<a href="index_login.html">LOG IN</a>|</li>
+            <li id="logoutLink">|<a href="#" onclick="logout()">LOG OUT</a>|</li>
         </ul>
 
-        <ul id="nav-mobile" class="side-nav">
+        <ul id="nav-mobile" class="side-nav menuText">
             <li><a href="index.html">Home</a></li>
             <li><a href="index_order.html">Order</a></li>
             <li><a href="index_service.html">Services</a></li>
             <li><a href="index_cars.html">Cars</a></li>
             <li><a href="index_contact.html">Contacts</a></li>
-            <li><a href="index_user.html">User</a></li>
+            <li id="registermLink"><a href="index_user.html">Register</a></li>
+            <li id="loginmLink"><a href="index_login.html">Log in</a></li>
+            <li id="logoutmLink"><a href="#" onclick="logout()">Log out</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
