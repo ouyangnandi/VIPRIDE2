@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Admin Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/cookie.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#adminLogin").validate({
+                    rules: {
+                        username: {
+                            required: true,
+                        },
+                        password: {
+                            required: true,
+                        }
+                    },
+                    errorElement: 'div',
+                    errorPlacement: function(error, element) {
+                        var placement = $(element).siblings("span");
+                        error.addClass("invalid");
+                        if (placement.length > 0) {
+                            element.addClass("invalid");
+                            error.insertAfter(placement);
+                        } else {
+                            element.addClass("invalid");
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+
+                $("#adminLogin").submit(function(e) {
+                    e.preventDefault();
+                });
+
+                if (Cookies.get('username')) {
+                    $(location).attr('href', 'admin.html');
+                }
+
+            });
+
+            function login() {
+
+                if ($("#adminLogin").valid()) {
+                    $.ajax({
+                        url: 'backend/adminLogin.php?action=1',
+                        type: 'post',
+                        dataType: 'json',
+                        data: $("#adminLogin").serialize(),
+                        success: function(request) {
+                            if (request.status == "1") {
+                                Cookies.set('username', $("#username").val(), {expires: 1});
+                                $(location).attr('href', 'admin.html');
+                            } else {
+                                $("#errorInfo").html("Username or passowrd is invalid");
+                            }
+                        },
+                        error: function(request) {
+                            $("#errorInfo").html("Error happened");
+                        }
+                    });
+                }
+
+            }
+
+        </script>
+
+    </head>
+    <body>
+        <div class="navbar-fixed">
+            <nav class="white" role="navigation">
+                <div class="nav-wrapper container">
+                    <a id="logo-container" href="index.html" class="brand-logo">VIP RIDE</a>
+
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index_order.html">Order</a></li>
+                        <li><a href="index_service.html">Services</a></li>
+                        <li><a href="index_cars.html">Cars</a></li>
+                        <li><a href="index_contact.html">Contacts</a></li>
+                    </ul>
+
+                    <ul id="nav-mobile" class="side-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index_order.html">Order</a></li>
+                        <li><a href="index_service.html">Services</a></li>
+                        <li><a href="index_cars.html">Cars</a></li>
+                        <li><a href="index_contact.html">Contacts</a></li>
+                    </ul>
+                    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container">
+            <div class="section">
+
+                <div class="row">
+                    <div class="col s12 center">
+                        <h3><i class="mdi-content-send brown-text"></i></h3>
+                        <h4>Admin Login</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div id="errorInfo" style="color:red"></div>
+                    </div>
+                </div>
+
+                <form id="adminLogin" class="col s12" method="post">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input  id="username" name="username" type="text" class="validate" required="" aria-required="true" >
+                            <label for="username"  >Username</label>
+                            <span ></span>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="password" name="password" type="password" >
+                            <label for="password">Password</label>
+                            <span ></span>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="input-field col s12 right-align">
+                            <button class="btn waves-effect waves-light"  onclick="login()">Login
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>
