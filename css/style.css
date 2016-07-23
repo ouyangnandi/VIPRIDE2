@@ -90,7 +90,7 @@ footer.page-footer {
 
     display: block;
 
-    width: 150px;
+    width: 170px;
 
     -moz-box-sizing: border-box;
 
@@ -110,7 +110,7 @@ footer.page-footer {
 
     line-height: 20px;
 
-    padding: 7px 20px 8px;
+    padding: 7px 10px 8px;
 
     transition: 0.5s ease;
 
@@ -375,6 +375,7 @@ textarea{
 .logoLink{
     position:relative !important;
     color:#feed80;
+
 }
 
 .banner{
@@ -398,4 +399,10 @@ textarea{
 
 .facebookLogo:hover{
     opacity: 1;
+}
+
+.buttonNavSide{
+    position:absolute !important;
+    top:10px;
+    left:-20px;
 }
