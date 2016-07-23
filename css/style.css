@@ -252,11 +252,7 @@ footer.page-footer {
     background: url("../images/bg.png")  repeat;
 }
 
-.menuStyle {
-    background: #000000;
-    border-bottom: #837A43 solid 1px;
-    border-up: #837A43 solid 1px;
-}
+
 .goldTextLink{
     font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
     color:#feed80;
@@ -314,8 +310,8 @@ footer.page-footer {
     margin-top: 9px;
 }
 
-.height190{
-    height:190px;
+.height180{
+    min-height:190px;
 }
 
 .sectionTitle{
@@ -354,4 +350,37 @@ input {
 textarea{
     color:#D7C2B0;
     font-family: Trebuchet MS ,Arial, Verdana, Helvetica, sans-serif;
+}
+.logoStyle{
+    max-width:100%;
+    max-height: 60px;
+    margin:5px auto;
+}
+
+.logoLink{
+    position:relative !important;
+    color:#feed80;
+}
+
+.banner{
+
+    width:100%;
+    margin:auto;
+    border: #feed80 1px solid;
+    margin-top: 40px;
+}
+
+.menuStyle {
+    background: #000000;
+    border-bottom: #837A43 solid 1px;
+    border-up: #837A43 solid 1px;
+    height:80px;
+}
+
+.facebookLogo{
+    opacity: 0.6;
+}
+
+.facebookLogo:hover{
+    opacity: 1;
 }
