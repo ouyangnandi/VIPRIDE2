@@ -406,3 +406,7 @@ textarea{
     top:10px;
     left:-20px;
 }
+
+.fontSizeTopBar{
+    font-size: 12px;
+}
